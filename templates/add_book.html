@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Book List</h1>
+
+    <!-- Add Book Form -->
+    <h2>Add a New Book</h2>
+    <form method="POST" action="{{ url_for('add_book') }}">
+        <label for="ISBN">ISBN:</label>
+        <input type="text" name="ISBN" id="ISBN" required><br>
+        <label for="Book_Title">Book Title:</label>
+        <input type="text" name="BookTitle" id="BookTitle" required><br>
+
+        <label for="Author">Author:</label>
+        <input type="text" name="BookAuthor" id="BookAuthor" required><br>
+
+        <label for="Publisher">Publisher:</label>
+        <input type="text" name="Publisher" id="Publisher"><br>
+
+        <label for="Year">Year:</label>
+        <input type="number" name="YearOfPublication" id="YearOfPublication"><br>
+
+        <button type="submit">Add Book</button>
+    </form>
+
+</body>
+</html>
