@@ -4,19 +4,6 @@ import csv
 import sqlite3
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///project.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
-# db=SQLAlchemy(app)
-
-# class Book(db.Model):
-#     serial_no=db.Column(db.Integer,primary_key=True)
-#     title=db.Column(db.String(200),nullable=False)
-#     publish_year=db.Column(db.Integer,nullable=False)
-#     publish_name=db.Column(db.String(100),nullable=False)
-#     photo=db.Column(db.String(255), nullable=True)
-
-#     def __repr__(self):
-#         return f"Book Name {self.title}"
 
 def get_db_data():
     # Connect to SQLite database

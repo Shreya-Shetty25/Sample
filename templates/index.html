@@ -69,18 +69,100 @@
         .card .id {
             font-weight: bold;
         }
+        .search-wrapper {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        
+        .search-box {
+            position: relative;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus-within {
+            box-shadow: 0 3px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .search-input {
+            border-radius: 50px;
+            padding-left: 45px;
+            padding-right: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            height: 50px;
+        }
+        
+        .search-input:focus {
+            border-color: #0d6efd;
+            box-shadow: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 10;
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50px;
+            padding: 8px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-50%) scale(1.05);
+        }
     </style>
 </head>
-<body>
-    <h1>Books Collection</h1>
-    <form method="GET" action="{{ url_for('get_book_by_id') }}">
+<body style="background-color: #333;">
+    <p style="color: white; font-size:70px; text-align:center">Books Collection</p>
+    
+    <div class="container">
+        <!-- Light Theme Search -->
+        <div class="search-wrapper">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <form method="GET" action="{{ url_for('get_book_by_id') }}">
+                <input type="text" name="search" class="form-control search-input" placeholder="Search anything..." value="{{ request.args.get('search') }}">
+                <button class="btn btn-primary search-button" type="submit">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+<br>
+<br>
+
+    <!-- <form method="GET" action="{{ url_for('get_book_by_id') }}">
         <input type="text" name="search" placeholder="Search by Title or Author" value="{{ request.args.get('search') }}">
         <button type="submit">Search</button>
-    </form>
+    </form> -->
     <a href="{{ url_for('add_book_form') }}">
+    <button class="btn btn-warning search-button" type="submit" style="margin-top: -140px; margin-right:525px; width:430px">
+        <b>Add Book</b>
+    </button>
+
+</a>
+    <!-- <a href="{{ url_for('add_book_form') }}">
         <button type="button">Add Book</button>
-    </a>
+    </a> -->
     <!-- Card Container -->
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
     <div class="card-container">
         {% for row in data %}
             <div class="card">
@@ -95,7 +177,7 @@
                         data-title="{{ row[1] }}" 
                         data-author="{{ row[2] }}" 
                         data-publisher="{{ row[4] }}" 
-                        data-year="{{ row[3] }}">
+                        data-year="{{ row[3] }}" style="margin-bottom: 10px;">
                     Update
                 </button>
                 <br>
